@@ -1,9 +1,9 @@
-# The manifest for the "nextapppipeline" pipeline.
+# The manifest for the "nextpipeline" pipeline.
 # This YAML file defines your pipeline: the source repository it tracks and the order of the environments to deploy to.
 # For more info: https://aws.github.io/copilot-cli/docs/manifest/pipeline/
 
 # The name of the pipeline.
-name: nextapppipeline
+name: nextpipeline
 
 # The version of the schema used in this template.
 version: 1
@@ -24,11 +24,6 @@ source:
 stages:
   - # The name of the environment.
     name: dev
-    deployments:
-      deploy-env:
-        template_path: infrastructure/dev.env.yml
-        template_config: infrastructure/dev.env.params.json
-        stack_name: nextapp-dev
     # Optional: flag for manual approval action before deployment.
     # requires_approval: true
     # Optional: use test commands to validate this stage of your build.
