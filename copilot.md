@@ -32,3 +32,10 @@ copilot pipeline deploy
 
 GitHubへの接続
 https://docs.aws.amazon.com/ja_jp/dtconsole/latest/userguide/connections-create-github.html
+
+
+### パイプラインデプロイ
+データベースを作成します。データベースエンジンとしてAmazon Aurora（オーロラ）を選択します。
+```
+copilot storage init -t Aurora
+```
