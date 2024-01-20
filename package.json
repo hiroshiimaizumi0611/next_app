@@ -12,6 +12,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.496.0",
     "@prisma/client": "^5.8.1",
     "next": "14.1.0",
     "react": "^18",
