@@ -17,3 +17,18 @@ copilot env init
 ```
 copilot svc init
 ```
+
+### パイプライン設定
+AWS Copilotを使用してCI/CDパイプラインを作成します。次のコマンドを実行します。
+```
+copilot pipeline init
+```
+
+### パイプラインデプロイ
+AWS Copilotを使用してCI/CDパイプラインをデプロイします。
+```
+copilot pipeline deploy
+```
+
+GitHubへの接続
+https://docs.aws.amazon.com/ja_jp/dtconsole/latest/userguide/connections-create-github.html
