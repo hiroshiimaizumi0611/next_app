@@ -9,12 +9,11 @@ phases:
       - wget -q https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v1.32.1
       - mv ./copilot-linux-v1.32.1 ./copilot-linux
       - chmod +x ./copilot-linux
-      - npm install -g next
-      - yarn
+      - npm install
   build:
     commands:
       - echo "Run your tests"
-      - yarn build
+      - npm run build
       # - make test
   post_build:
     commands:
@@ -36,3 +35,5 @@ phases:
 artifacts:
   files:
     - "infrastructure/*"
+    - ".next/**/*"
+    - "public/**/*"
