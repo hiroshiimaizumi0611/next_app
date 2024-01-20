@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
 import React from "react";
+import { getPrismaClient } from "../../../prisma/prisma";
 
 const fetchUsers = async () => {
-  const prisma = new PrismaClient();
+  const prisma = await getPrismaClient();
   return await prisma.user.findMany();
 };
 
