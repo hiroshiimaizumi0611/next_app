@@ -1,15 +1,22 @@
-FROM node:alpine as builder
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+FROM node:18 AS builder
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install
 COPY . .
-RUN npx prisma generate
-RUN npm run build
+RUN yarn prisma generate
+RUN yarn build
 
-FROM node:alpine
+
+FROM node:18 AS runner
 ENV NODE_ENV=production
-WORKDIR /app
-COPY --from=builder /app/ ./
 
-EXPOSE 3000
-CMD ["npm", "start"]
+# https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next/server ./.next/server
+COPY --from=builder /app/.next/standalone ./
+
+CMD ["node", "server.js"]
