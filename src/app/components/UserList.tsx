@@ -1,14 +1,14 @@
 import React from "react";
-import { getPrismaClient } from "../../../prisma/prisma";
 
 const fetchUsers = async () => {
-  const prisma = await getPrismaClient();
-  return await prisma.user.findMany();
+  return [
+    { name: "test", email: "test@test.com" },
+    { name: "test2", email: "test2@test2.com" },
+  ];
 };
 
 export default async function UserList() {
   const users = await fetchUsers();
-  console.log(users);
   return (
     <div className="mt-8">
       <h2 className="text-2xl font-semibold mb-4 text-gray-800">
