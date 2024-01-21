@@ -13,7 +13,7 @@ FROM node:18 AS runner
 ENV NODE_ENV=production
 
 # https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files
-COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/.next/server ./.next/server
