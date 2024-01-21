@@ -36,7 +36,7 @@ async function getDatabaseUrl() {
     const res = await client.send(
       new GetSecretValueCommand({
         SecretId: secretId,
-        VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
+        VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified.
       })
     );
 
