@@ -27,7 +27,7 @@ export async function getPrismaClient() {
 }
 
 async function getDatabaseUrl() {
-  const secretId = process.env["NEXTAPP_SECRET_ARN"];
+  const secretId = process.env["NEXTAPP_SECRET"]
   console.log(secretId);
   const region = "ap-northeast-1";
   const client = new SecretsManagerClient({ region });
