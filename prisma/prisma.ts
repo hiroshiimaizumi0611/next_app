@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import {
-    SecretsManagerClient,
-    GetSecretValueCommand,
-  } from '@aws-sdk/client-secrets-manager';
+  SecretsManagerClient,
+  GetSecretValueCommand,
+} from "@aws-sdk/client-secrets-manager";
 
 export let prisma: PrismaClient | undefined;
 
@@ -27,7 +27,9 @@ export async function getPrismaClient() {
 }
 
 async function getDatabaseUrl() {
-  const secretId = process.env["nextappAuroraSecret-yF0mNL23PFzN"];
+  const secretId = process.env["NEXTAPP_SECRET"];
+  console.log(process.env["NEXTAPP_SECRET"]);
+  console.log(secretId);
   const region = "ap-northeast-1";
   const client = new SecretsManagerClient({ region });
 
@@ -38,6 +40,7 @@ async function getDatabaseUrl() {
         VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
       })
     );
+    console.log(res.SecretString);
 
     if (res.SecretString) {
       const secret = JSON.parse(res.SecretString);
